@@ -20,7 +20,7 @@ ContentPane,
 Form,
 TextBox,
 PasswordValidator,
-Buton,
+Button,
 parser){
     
     return declare([_WidgetBase,_TemplatedMixin,_WidgetsInTemplateMixin],{
@@ -31,6 +31,7 @@ parser){
             var domNode = this.domNode;
             this.inherited(arguments);
             console.log('En postCreate');
+
         },
         
         constructor:function(args){

@@ -74,6 +74,8 @@ parser){
             on(this.btnPass,"click",function(){
                myDialog.show(); 
             });
+            
+            
         }
         
     });
