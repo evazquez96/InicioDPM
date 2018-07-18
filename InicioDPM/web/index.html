@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dijit/themes/claro/claro.css">
+        <link rel="stylesheet" href="myApp/widget/css/buttons/buttonsCSS.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.13.0/dojo/dojo.js"
+                data-dojo-config="async:true,parseOnLoad:false"></script>
+                <style>
+                    html,body{
+                        height: 98%;
+                        width: 98%;
+                    }
+                    #borderContainer{
+                        height: 100%;
+                        width: 100%;
+                    }
+                    #div{
+                        height: 100%;
+                        width: 100%;
+                    }
+                    .iconAbout{
+                        background-image: url("myApp/widget/images/fondo2.png");
+                        background-repeat: no-repeat;
+                        display: inline-block;
+                        height: 128px;
+                        margin-right: 15px;
+                        vertical-align: middle;
+                        width: 128px;
+                    }
+                </style>
+    </head>
+    <body class="claro">
+        <div id="div"></div>
+        <script>
+            require(["dojo/dom"
+                ,"myApp/widget/DPMInicioWidget.js"],
+            function(dom,DPMInicio){
+                var div=dom.byId("div");
+                var inicio=new DPMInicio().placeAt(div);
+                inicio.startup();//Inicialización del Widget
+            });
+        </script>
+    </body>
+</html>

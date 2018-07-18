@@ -1,0 +1,83 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 9/07/2018, 12:04:48 PM
+    Author     : Eduardo
+*/
+            #divBtns{
+                display:inline-grid;
+                text-align: center;
+                height: 150px;    
+            }
+            
+            .dijitReset.dijitInline.dijitButtonNode{
+                text-align:center;
+                width: 200px;
+                height: 30px;
+                
+            }
+            
+            .myIconDrive{
+                  background-image: url(../../images/buttons/Drive.png);
+                  background-repeat: round;
+                  width: 25px;
+                  height: 25px;
+                  text-align: left;
+            }
+            
+            .myIconGmail{
+                  background-image: url(../../images/buttons/Gmail.png);
+                  background-repeat: round;
+                  width: 25px;
+                  height: 25px;
+                  text-align: right;
+            }
+            .myIconTMS{
+                  background-image: url(../../images/buttons/TMS.png);
+                  background-repeat: round;
+                  width: 25px;
+                  height: 25px;
+                  text-align: center;
+            }
+            
+            .myIconMenfis{
+                  background-image: url(../../images/buttons/menfisdesk.png);
+                  background-repeat: round;
+                  width: 27px;
+                  height: 27px;
+                  text-align: center;
+            }
+            
+            .myIconBI{
+                  background-image: url(../../images/buttons/BI.jpg);
+                  background-repeat: round;
+                  width: 25px;
+                  height: 25px;
+                  text-align: center;
+            }
+            .myIconHo{
+                  background-image: url(../../images/buttons/Hangouts.png);
+                  background-repeat: round;
+                  width: 25px;
+                  height: 25px;
+                  text-align: center;
+            }
+            
+            .myLogoIcon{
+                  background-image: url(../../images/logoMexa.png);
+                  background-repeat: round;
+                  width: 25px;
+                  height: 25px;
+                  text-align: center;
+            }
+
+            .myPass{
+                  background-image: url(../../images/buttons/pass2.png);
+                  background-repeat: round;
+                  width: 25px;
+                  height: 25px;
+                  text-align: center;
+            }
