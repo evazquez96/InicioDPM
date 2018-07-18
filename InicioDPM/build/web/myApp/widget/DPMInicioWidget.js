@@ -10,6 +10,7 @@ define(["dojo/_base/declare",
     "dijit/layout/TabContainer",
     "dijit/layout/AccordionContainer",
     "dijit/layout/AccordionPane",
+    "dijit/Dialog",
     "/InicioDPM/myApp/widget/ChangeUserPassword.js",
     "dojo/on",
     "dojo/parser"],
@@ -25,6 +26,7 @@ Button,
 TabContainer,
 AccordionContainer,
 AccordionPane,
+Dialog,
 ChangeUserPassword,
 on,
 parser){
@@ -34,7 +36,7 @@ parser){
             var domNode = this.domNode;
             this.inherited(arguments);
             this.createEvents();
-            this.createLeftPane();
+            this.createBtnChangePass();
             console.log('En postCreate');
         },
         constructor:function(args){
@@ -62,33 +64,16 @@ parser){
          }); 
          
         },
-        
-        createCenterPane: function(){
-            var tabContainer=new TabContainer({
-                style:"height:100%;width:100%"
+        createBtnChangePass: function(){
+            var myDialog=new Dialog({
+                title: "Cambio de contraseña",
+                style:"width:320px"
             });
-            
             var changeUserPasswordWidget=new ChangeUserPassword();
-            var contentP=new ContentPane(
-                    {title:"Change Password",
-                     content: changeUserPasswordWidget}
-                    );
-            tabContainer.addChild(contentP);
-            //changeUserPasswordWidget.startup();
-            this.CenterPane.addChild(tabContainer);
-            //tabContainer.startup();
-        },
-        createLeftPane: function (){
-            var accordionC=new AccordionContainer({style:"background: transparent"});
-            var changeUserPasswordWidget=new ChangeUserPassword();
-            var accordionP=new AccordionPane(
-                    {title:"Change Password",
-                     content: changeUserPasswordWidget,
-                     style:"background: transparent"
-                    }
-                    );
-            accordionC.addChild(accordionP);
-            //this.LeftPane.addChild(accordionC);
+            myDialog.addChild(changeUserPasswordWidget);
+            on(this.btnPass,"click",function(){
+               myDialog.show(); 
+            });
         }
         
     });
