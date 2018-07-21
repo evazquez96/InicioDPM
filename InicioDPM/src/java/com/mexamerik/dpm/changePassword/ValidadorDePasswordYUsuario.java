@@ -42,7 +42,9 @@ public class ValidadorDePasswordYUsuario extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
                         
-                String user=(String)request.getAttribute("user");
+            response.setContentType("text/html;charset=UTF-8");
+
+                String user=(String)request.getParameter("user");
                 password=(String)request.getAttribute("passwordActual");
                 /**
                  * Las líneas anteriores recuperan el usuario y la contraseña
@@ -52,7 +54,6 @@ public class ValidadorDePasswordYUsuario extends HttpServlet {
                 
                 session.setAttribute("user",user);//Subimos el nombre de usuario a Session.
         
-                response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -60,7 +61,7 @@ public class ValidadorDePasswordYUsuario extends HttpServlet {
             out.println("<title>Servlet ValidadorDePasswordYUsuario</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ValidadorDePasswordYUsuario at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ValidadorDePasswordYUsuario at " + session.getAttribute("user")+ "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
