@@ -12,6 +12,10 @@
         <servlet-name>ChangePasswordServlet</servlet-name>
         <servlet-class>com.mexamerik.dpm.changePassword.ChangePasswordServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ValidadorDePasswordYUsuario</servlet-name>
+        <servlet-class>com.mexamerik.dpm.changePassword.ValidadorDePasswordYUsuario</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>changePasswordServlet</servlet-name>
         <url-pattern>/changePasswordServlet</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>ChangePasswordServlet</servlet-name>
         <url-pattern>/ChangePasswordServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ValidadorDePasswordYUsuario</servlet-name>
+        <url-pattern>/ValidadorDePasswordYUsuario</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
