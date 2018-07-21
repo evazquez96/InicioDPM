@@ -58,6 +58,16 @@ parser){
         constructor:function(args){
             lang.mixin(this,args);
             console.log('En el constructor');
+        },
+        
+        validarUsuario: function (){
+            /*
+             *LLamada AJAX la cual verificara que el 
+             *uuario y la contraseña actual de la persona
+             *sea el correcto.
+             *Una vez que sea correcto se habilitara el dialogo
+             *que permitira capturar la nueva contraseña.
+             */
         }
         
     });
