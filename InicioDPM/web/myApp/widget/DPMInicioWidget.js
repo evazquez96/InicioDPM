@@ -12,6 +12,7 @@ define(["dojo/_base/declare",
     "dijit/layout/AccordionPane",
     "dijit/Dialog",
     "/InicioDPM/myApp/widget/ChangeUserPassword.js",
+    "/InicioDPM/myApp/widget/FormWidget1.js",
     "dojo/on",
     "dojo/parser"],
 function(declare,
@@ -28,6 +29,7 @@ AccordionContainer,
 AccordionPane,
 Dialog,
 ChangeUserPassword,
+Form1,
 on,
 parser){
     return declare([_WidgetBase,_TemplatedMixin,_WidgetsInTemplateMixin],{
@@ -65,6 +67,19 @@ parser){
          
         },
         createBtnChangePass: function(){
+            
+            var myDialog=new Dialog(
+                    {
+                        title: "Cambio de contraseña",
+                        style:"width:390px;text-align: -webkit-right"
+                    }
+                );
+            var form1=new Form1();
+            myDialog.addChild(form1);
+            on(this.btnPass,"click",function(){
+               myDialog.show(); 
+            });
+            /*
             var myDialog=new Dialog({
                 title: "Cambio de contraseña",
                 style:"width:320px"
@@ -75,7 +90,7 @@ parser){
                myDialog.show(); 
             });
             
-            
+            */
         }
         
     });

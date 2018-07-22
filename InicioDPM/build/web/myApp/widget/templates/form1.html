@@ -1,0 +1,36 @@
+<div style="background: transparent">
+    <div data-dojo-type="dijit/layout/ContentPane"
+         data-dojo-attach-point="ContentPaneWidgetForm1"
+         title="Autenticar"
+         class="dijitDialogPaneContentArea">
+        <form data-dojo-type="dijit/form/Form" 
+              data-dojo-attach-point="myForm1"
+              action="ChangePasswordServlet" 
+              method="post"
+              style="background: transparent">
+            Usuario: <input data-dojo-type="dijit/form/TextBox" name="txtUsr"
+                     title="User :"/>
+            Contraseña Actual: <input data-dojo-type="dijit/form/TextBox" name="txtPassActual"
+                     title="Password Actual :"/>
+            <input type="hidden" name="newPass1"  id="p1"> 
+            <!--
+            <button data-dojo-type="dijit/form/Button" 
+                    type="submit">enviar!
+            </button>-->  
+            <div class="dijitDialogPaneActionBar" style="text-align: center"
+                     data-dojo-attach-point="barForm1"
+                     data-dojo-type="dijit/layout/ContentPane">
+                
+                <button data-dojo-type="dijit/form/Button" 
+                        type="submit">Verificar
+                </button>
+                <button data-dojo-type="dijit/form/Button" 
+                        data-dojo-attach-point="btnCancelForm1"
+                        type="reset"
+                        >Cancelar</button>
+                
+            </div>
+        </form>
+
+    </div>
+</div>
