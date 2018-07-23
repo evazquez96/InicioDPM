@@ -10,6 +10,7 @@ define(["dojo/_base/declare",
     //"dojox/form/PasswordValidator",
     "dijit/form/Button",
     "dojo/request",
+    "dojo/when",
     "dojo/on",
     "dijit/registry",
     "dojo/parser"],
@@ -25,6 +26,7 @@ TextBox,
 //PasswordValidator,
 Button,
 request,
+when,
 on,
 registry,
 parser){
@@ -46,7 +48,8 @@ parser){
                      * Contraseña.
                      */
                     context.validarUsuario();
-                    return confirm("Los datos se enviaran para ser validados"); 
+                    alert("Los datos se enviaran para ser validados");
+                    return true; 
                 }
                 else{
                     alert ("El formulario1 contiene datos invalidos");
@@ -78,13 +81,21 @@ parser){
             var context=this;
             //alert(context.txtUsr.value);
 
-            var promesa=request.post(url,{//Cambiar esta parte en el servidor de produccion
+            var deferred=request.post(url,{//Cambiar esta parte en el servidor de produccion
                 handleAs:"text",
                 data:{
                     txtUsr:context.txtUsr.value,
                     txtPassActual:context.txtPassActual.value
                 }
             });
+            function response(value){
+                if(value==1)
+                    alert("Se actualizo un registro");
+                else
+                    alert("Error, Usuario o Contraseña incorrectos");
+            }
+            when(deferred,response);
+            /*
             promesa.then(function(response){
                 if(response==1)
                     alert("Se actualizo un registro");
@@ -93,7 +104,7 @@ parser){
             },function(error){
                 alert(error);
             });
-  
+             */
         }
         
     });
