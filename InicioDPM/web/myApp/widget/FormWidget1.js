@@ -7,9 +7,11 @@ define(["dojo/_base/declare",
     "dijit/layout/ContentPane",
     "dijit/form/Form",
     "dijit/form/TextBox",
-    "dojox/form/PasswordValidator",
+    //"dojox/form/PasswordValidator",
     "dijit/form/Button",
+    "dojo/request",
     "dojo/on",
+    "dijit/registry",
     "dojo/parser"],
 function(declare,
 lang,
@@ -20,9 +22,11 @@ template,
 ContentPane,
 Form,
 TextBox,
-PasswordValidator,
+//PasswordValidator,
 Button,
+request,
 on,
+registry,
 parser){
     
     return declare([_WidgetBase,_TemplatedMixin,_WidgetsInTemplateMixin],{
@@ -41,7 +45,8 @@ parser){
                      * al Servlet para el cambio de 
                      * Contraseña.
                      */
-                    return confirm("Adfasdf"); 
+                    context.validarUsuario();
+                    return confirm("Los datos se enviaran para ser validados"); 
                 }
                 else{
                     alert ("El formulario1 contiene datos invalidos");
@@ -64,11 +69,31 @@ parser){
         validarUsuario: function (){
             /*
              *LLamada AJAX la cual verificara que el 
-             *uuario y la contraseña actual de la persona
+             *usuario y la contraseña actual de la persona
              *sea el correcto.
-             *Una vez que sea correcto se habilitara el dialogo
+             *Una vez que sea validado se habilitara el dialogo
              *que permitira capturar la nueva contraseña.
              */
+            var url="http://localhost:8084/InicioDPM/ChangePasswordServlet";
+            var context=this;
+            //alert(context.txtUsr.value);
+
+            var promesa=request.post(url,{//Cambiar esta parte en el servidor de produccion
+                handleAs:"text",
+                data:{
+                    txtUsr:context.txtUsr.value,
+                    txtPassActual:context.txtPassActual.value
+                }
+            });
+            promesa.then(function(response){
+                if(response==1)
+                    alert("Se actualizo un registro");
+                else
+                    alert("error");
+            },function(error){
+                alert(error);
+            });
+  
         }
         
     });

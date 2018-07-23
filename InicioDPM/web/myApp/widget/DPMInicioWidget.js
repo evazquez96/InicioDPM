@@ -70,7 +70,7 @@ parser){
             
             var myDialog=new Dialog(
                     {
-                        title: "Cambio de contraseña",
+                        title: "Autenticación",
                         style:"width:390px;text-align: -webkit-right"
                     }
                 );

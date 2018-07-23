@@ -16,6 +16,10 @@
         <servlet-name>ValidadorDePasswordYUsuario</servlet-name>
         <servlet-class>com.mexamerik.dpm.changePassword.ValidadorDePasswordYUsuario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Autenticador</servlet-name>
+        <servlet-class>com.mexamerik.dpm.changePassword.Autenticador</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>changePasswordServlet</servlet-name>
         <url-pattern>/changePasswordServlet</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>ValidadorDePasswordYUsuario</servlet-name>
         <url-pattern>/ValidadorDePasswordYUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Autenticador</servlet-name>
+        <url-pattern>/Autenticador</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

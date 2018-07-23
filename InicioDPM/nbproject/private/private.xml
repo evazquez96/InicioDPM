@@ -2,6 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/HP/Documents/Repositorios/Proyectos/InicioDPM/InicioDPM/web/myApp/widget/FormWidget1.js</file>
+            <file>file:/C:/Users/HP/Documents/Repositorios/Proyectos/InicioDPM/InicioDPM/web/myApp/widget/DPMInicioWidget.js</file>
+            <file>file:/C:/Users/HP/Documents/Repositorios/Proyectos/InicioDPM/InicioDPM/src/java/com/mexamerik/dpm/Helper/Seguridad.java</file>
+            <file>file:/C:/Users/HP/Documents/Repositorios/Proyectos/InicioDPM/InicioDPM/web/index.html</file>
+            <file>file:/C:/Users/HP/Documents/Repositorios/Proyectos/InicioDPM/InicioDPM/src/java/com/mexamerik/dpm/changePassword/ChangePasswordServlet.java</file>
+            <file>file:/C:/Users/HP/Documents/Repositorios/Proyectos/InicioDPM/InicioDPM/src/java/com/mexamerik/dpm/Helper/ConnectionManager.java</file>
+            <file>file:/C:/Users/HP/Documents/Repositorios/Proyectos/InicioDPM/InicioDPM/web/myApp/widget/templates/ChangeUserPassword.html</file>
+            <file>file:/C:/Users/HP/Documents/Repositorios/Proyectos/InicioDPM/InicioDPM/web/myApp/widget/templates/form1.html</file>
+        </group>
     </open-files>
 </project-private>

@@ -1,7 +1,11 @@
 package com.mexamerik.dpm.changePassword;
 
+import com.mexamerik.dpm.Helper.ConnectionManager;
+import com.mexamerik.dpm.Helper.Seguridad;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.Security;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,19 +23,25 @@ public class ChangePasswordServlet extends HttpServlet {
         @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+       
+        response.setContentType("application/json;charset=UTF-8");
+
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            String user = request.getParameter("txtUsr");
-            //String password=request.getParameter("newPass");
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ChangePasswordServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>User: " + user + "</h1>");
             
-        }
+            String user = request.getParameter("txtUsr");
+            String password=request.getParameter("txtPassActual");
+            String pass=Seguridad.encriptarConMD5(password);
+            int r=ConnectionManager.autenticar(user, pass);
+            out.println(r);
+           
+            
+            //response.sendRedirect("/InicioDPM/index.html");
+            //Una vez que el servlet actualize las claves se regresara a index.html
+
+        }   catch (SQLException ex) {
+                Logger.getLogger(ChangePasswordServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+        
     }
 }
