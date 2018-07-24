@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -18,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class Autenticador extends HttpServlet {
     
-            @Override
+        @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        
@@ -28,11 +29,19 @@ public class Autenticador extends HttpServlet {
             
             String user = request.getParameter("txtUsr");
             String password=request.getParameter("txtPassActual");
+            
             String pass=Seguridad.encriptarConMD5(password);
             int r=ConnectionManager.autenticar(user, pass);
+            HttpSession session;
+            if(r==1){
+                session=request.getSession();
+                session.setAttribute("user",user);
+                /***
+                 * Subimos el atributo que corresponde al usuario a session.
+                 */
+            }
             out.println(r);
-           
-            
+
             //response.sendRedirect("/InicioDPM/index.html");
             //Una vez que el servlet actualize las claves se regresara a index.html
 

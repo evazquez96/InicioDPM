@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -27,8 +28,12 @@ public class ChangePasswordServlet extends HttpServlet {
         response.setContentType("application/json;charset=UTF-8");
 
         try (PrintWriter out = response.getWriter()) {
-            
-            String user = request.getParameter("txtUsr");
+            HttpSession session=request.getSession();
+            String user =(String)session.getAttribute("user");
+            /**
+             * Obtenemos el nombre de usuario que se subio a sessión en
+             * Autenticación.java
+             */
             String password=request.getParameter("txtPassActual");
             String pass=Seguridad.encriptarConMD5(password);
             int r=ConnectionManager.autenticar(user, pass);

@@ -34,6 +34,12 @@ on,
 parser){
     return declare([_WidgetBase,_TemplatedMixin,_WidgetsInTemplateMixin],{
         templateString:template,
+        myDialog:new Dialog(
+                    {
+                        title: "Autenticación",
+                        style:"width:390px;text-align: -webkit-right"
+                    }
+                ),
         postCreate:function(){
             var domNode = this.domNode;
             this.inherited(arguments);
@@ -66,18 +72,16 @@ parser){
          }); 
          
         },
+        
+        getDialog:function(){return this.myDialog;},
+        
         createBtnChangePass: function(){
-            
-            var myDialog=new Dialog(
-                    {
-                        title: "Autenticación",
-                        style:"width:390px;text-align: -webkit-right"
-                    }
-                );
-            var form1=new Form1();
-            myDialog.addChild(form1);
+            var dialog=this.myDialog;
+            var form1=new Form1({dialog:dialog});
+            this.myDialog.addChild(form1);
+            var context=this;
             on(this.btnPass,"click",function(){
-               myDialog.show(); 
+               context.myDialog.show(); 
             });
             /*
             var myDialog=new Dialog({

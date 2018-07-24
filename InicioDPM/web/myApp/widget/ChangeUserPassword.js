@@ -7,9 +7,12 @@ define(["dojo/_base/declare",
     "dijit/layout/ContentPane",
     "dijit/form/Form",
     "dijit/form/TextBox",
-   // "dojox/form/PasswordValidator",
+    "dojox/form/PasswordValidator",
     "dijit/form/Button",
+    "dijit/Dialog",
     "dojo/on",
+    "dojo/request",
+    "dojo/when",
     "dojo/parser"],
 function(declare,
 lang,
@@ -20,9 +23,12 @@ template,
 ContentPane,
 Form,
 TextBox,
-//PasswordValidator,
+PasswordValidator,
 Button,
+Dialog,
 on,
+request,
+when,
 parser){
     
     return declare([_WidgetBase,_TemplatedMixin,_WidgetsInTemplateMixin],{
@@ -41,7 +47,9 @@ parser){
                      * al Servlet para el cambio de 
                      * Contraseña.
                      */
-                    return confirm("Adfasdf"); 
+                     context.cambiarPass();
+                    alert("Aceptar");
+                    return true; 
                 }
                 else{
                     alert ("El formulario contiene datos invalidos");
@@ -60,7 +68,7 @@ parser){
             console.log('En el constructor');
         },
         
-        validarUsuario: function (){
+        cambiarPass: function (){
             /*
              *LLamada AJAX la cual verificara que el 
              *uuario y la contraseña actual de la persona
@@ -68,6 +76,23 @@ parser){
              *Una vez que sea correcto se habilitara el dialogo
              *que permitira capturar la nueva contraseña.
              */
+            var url="http://localhost:8084/InicioDPM/ChangePasswordServlet";
+            var context=this;
+            var deferred=request.post(url,{//Cambiar esta parte en el servidor de produccion
+                handleAs:"text",
+                data:{
+                    txtPassActual:"castillo"
+                }
+            });
+            function response(value){
+                if(value==1){
+                    alert("Se actualizo un registro");
+                }
+                else
+                    alert("Error, Usuario o Contraseña incorrectos");
+            }
+            when(deferred,response);
+            
         }
         
     });

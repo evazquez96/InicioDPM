@@ -4,11 +4,13 @@ define(["dojo/_base/declare",
     "dijit/_TemplatedMixin",
     "dijit/_WidgetsInTemplateMixin",
     "dojo/text!/InicioDPM/myApp/widget/templates/form1.html",
+    "/InicioDPM/myApp/widget/ChangeUserPassword.js",
     "dijit/layout/ContentPane",
     "dijit/form/Form",
     "dijit/form/TextBox",
-    //"dojox/form/PasswordValidator",
+    "dojox/form/PasswordValidator",
     "dijit/form/Button",
+    "dijit/Dialog",
     "dojo/request",
     "dojo/when",
     "dojo/on",
@@ -20,11 +22,13 @@ _WidgetBase,
 _TemplatedMixin,
 _WidgetsInTemplateMixin,
 template,
+ChangeUserPassword,
 ContentPane,
 Form,
 TextBox,
-//PasswordValidator,
+PasswordValidator,
 Button,
+Dialog,
 request,
 when,
 on,
@@ -48,8 +52,9 @@ parser){
                      * Contraseña.
                      */
                     context.validarUsuario();
-                    alert("Los datos se enviaran para ser validados");
-                    return true; 
+                    
+                    //alert("Los datos se enviaran para ser validados");
+                    //return true; 
                 }
                 else{
                     alert ("El formulario1 contiene datos invalidos");
@@ -77,7 +82,7 @@ parser){
              *Una vez que sea validado se habilitara el dialogo
              *que permitira capturar la nueva contraseña.
              */
-            var url="http://localhost:8084/InicioDPM/ChangePasswordServlet";
+            var url="http://localhost:8084/InicioDPM/Autenticador";
             var context=this;
             //alert(context.txtUsr.value);
 
@@ -88,13 +93,28 @@ parser){
                     txtPassActual:context.txtPassActual.value
                 }
             });
-            function response(value){
-                if(value==1)
-                    alert("Se actualizo un registro");
+            var context=this;
+            context.dialog.hide();
+            when(deferred,function(value){
+                if(value==1){
+                    var myDialog=new Dialog(
+                        {
+                            title: "Cambiar Contraseña",
+                            style:"width:390px;text-align: -webkit-right"
+                        }
+                    );
+                    var c = new ChangeUserPassword();
+                    //c.startup();
+                    myDialog.addChild(c);
+                    myDialog.startup();
+                    myDialog.show();
+                    console.log("adf");
+                    
+                    //alert("Autenticación con Exito");
+                }
                 else
                     alert("Error, Usuario o Contraseña incorrectos");
-            }
-            when(deferred,response);
+            });
             /*
             promesa.then(function(response){
                 if(response==1)
