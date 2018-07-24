@@ -13,6 +13,8 @@ define(["dojo/_base/declare",
     "dojo/on",
     "dojo/request",
     "dojo/when",
+    "dojo/dom",
+    "dijit/registry",
     "dojo/parser"],
 function(declare,
 lang,
@@ -29,6 +31,8 @@ Dialog,
 on,
 request,
 when,
+dom,
+registry,
 parser){
     
     return declare([_WidgetBase,_TemplatedMixin,_WidgetsInTemplateMixin],{
@@ -47,8 +51,8 @@ parser){
                      * al Servlet para el cambio de 
                      * Contraseña.
                      */
-                     context.cambiarPass();
-                    alert("Aceptar");
+                    //context.cambiarPass();
+                    //alert("Aceptar");
                     return true; 
                 }
                 else{
@@ -78,12 +82,17 @@ parser){
              */
             var url="http://localhost:8084/InicioDPM/ChangePasswordServlet";
             var context=this;
+            //var a=registry.byId("a");
+            
+            console.log("Pass :"+this.newPass.value);
+            debugger;
             var deferred=request.post(url,{//Cambiar esta parte en el servidor de produccion
                 handleAs:"text",
                 data:{
-                    txtPassActual:"castillo"
+                    newPass:context.newPass.value
                 }
             });
+            
             function response(value){
                 if(value==1){
                     alert("Se actualizo un registro");
