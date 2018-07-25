@@ -32,7 +32,7 @@ public class ConnectionManager {
         }
         return con;
     }
-    
+      
     public static int autenticar(String user,String passEncriptada)throws SQLException{
         
         String query="SELECT * FROM okm_user WHERE USR_ID = ? AND USR_PASSWORD  = ?";

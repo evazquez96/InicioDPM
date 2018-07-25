@@ -54,16 +54,22 @@ public class ChangePasswordServlet extends HttpServlet {
         public static int updateUserPassword(String user,String password) throws SQLException{
         String query="Update okm_user SET USR_PASSWORD= ? WHERE USR_ID= ?";
         PreparedStatement preparedStatement;
-        preparedStatement=ConnectionManager.getConnection().prepareStatement(query);
-        String pass=Seguridad.encriptarConMD5(password);
-        preparedStatement.setString(1,pass);
-        preparedStatement.setString(2,user);
-        int a=preparedStatement.executeUpdate();
-        System.out.println("Nueva contraseña para "+user +" :"+pass);
-        return a;
-        //System.out.println(a);
-   //q.setString("password", SecureStore.md5Encode(usrPassword.getBytes()));
-
+        Connection con=ConnectionManager.getConnection();
+        int a=0;
+        try{
+            preparedStatement=con.prepareStatement(query);
+            String pass=Seguridad.encriptarConMD5(password);
+            preparedStatement.setString(1,pass);
+            preparedStatement.setString(2,user);
+            a=preparedStatement.executeUpdate();
+            System.out.println("Nueva contraseña para "+user +" :"+pass);
+            con.commit();
+        }catch(SQLException e){
+            e.printStackTrace();
+            con.rollback();
+        }finally{
+            return a;
+        }
         
     }
 }
